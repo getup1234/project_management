@@ -1,0 +1,105 @@
+@{
+
+    int? totalPages = 0;
+
+    if (ViewBag.Users != null)
+
+    {
+
+        totalPages = (int)Math.Ceiling((double)ViewBag.Users.Count / 3);
+
+    }
+
+    int activePage = 2; // This value represents the currently active page. You may need to adjust it based on your requirements.
+
+}
+
+
+
+
+<h1>Users List</h1>
+
+
+
+
+<div class="d-flex flex-wrap">
+
+    @if (ViewBag.Users != null)
+
+    {
+
+        foreach (var user in ViewBag.Users)
+
+        {
+
+            <div class="card m-2" style="width: 18rem;">
+
+                <div class="card-body">
+
+                    <h5 class="card-title">@user.Email</h5>
+
+                    <p class="card-text">Status: @user.Id</p>
+
+                </div>
+
+            </div>
+
+        }
+
+    }
+
+    else
+
+    {
+
+        <p>No users found.</p>
+
+    }
+
+</div>
+
+
+
+
+<hr />
+
+
+
+
+<nav aria-label="...">
+
+    <ul class="pagination">
+
+        <li class="page-item @(activePage == 1 ? "disabled" : "")">
+
+            <a class="page-link" href="#">Previous</a>
+
+        </li>
+
+        @if (totalPages > 0)
+
+        {
+
+            for (var i = 1; i <= totalPages; i++)
+
+            {
+
+                <li class="page-item @(i == activePage ? "active" : "")" aria-current="page">
+
+                    <a class="page-link" href="#">@i</a>
+
+                </li>
+
+            }
+
+        }
+
+        <li class="page-item @(activePage == totalPages || totalPages == 0 ? "disabled" : "")">
+
+            <a class="page-link" href="#">Next</a>
+
+        </li>
+
+    </ul>
+
+</nav>

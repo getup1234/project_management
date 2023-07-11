@@ -1,0 +1,25 @@
+@model Project_management.Models.Ticket
+
+<h2>Edit Ticket</h2>
+
+<form asp-action="Edit" asp-for="@Model.Id" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label asp-for="Title">Title</label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Status:</label>
+        <select name="status" class="form-select" asp-for="Status">
+            <option value="CREATED">CREATED</option>
+            <option value="ASSIGNED">ASSIGNED</option>
+            <option value="ONGOING">ONGOING</option>
+            <option value="INTEGRATED">INTEGRATED</option>
+            <option value="CLOSED">CLOSED</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>

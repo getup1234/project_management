@@ -1,0 +1,41 @@
+@model Microsoft.AspNetCore.Identity.IdentityUser;
+
+
+
+
+<h1>Create New User</h1>
+
+
+
+
+<form asp-action="Add" method="post" class="form">
+
+    <div class="mb-3">
+
+        <label for="title" class="form-label">Title:</label>
+
+        <input asp-for="@Model.Email" id="title" class="form-control" />
+
+    </div>
+
+
+
+
+
+    <div>
+
+        <button type="submit" class="btn btn-primary">Create</button>
+
+    </div>
+
+</form>
+
+
+
+
+<hr />
+
+
+
+
+<a href="@Url.Action("List", "Users")" class="btn btn-secondary">Back to List</a>

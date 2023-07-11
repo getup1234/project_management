@@ -1,0 +1,20 @@
+@model Project_management.Models.Ticket
+
+<h1>Delete Ticket</h1>
+
+<div>
+    <p><strong>ID:</strong> @Model.Id</p>
+    <p><strong>Title:</strong> @Model.Title</p>
+    <p><strong>Status:</strong> @Model.Status</p>
+    <p><strong>Created At:</strong> @Model.CreatedAt</p>
+    <p><strong>Closed At:</strong> @Model.ClosedAt</p>
+</div>
+
+<hr />
+
+<form method="post" action="@Url.Action("DeleteConfirm", "Tickets", new { id = Model.Id })" onsubmit="return confirm('Are you sure you want to delete this project?');">
+    <input type="hidden" name="id" value="@Model.Id" />
+    <button type="submit">Delete</button>
+    <a href="@Url.Action("Index", "Tickets")">Cancel</a>
+</form>
+

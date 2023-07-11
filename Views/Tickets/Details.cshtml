@@ -1,0 +1,20 @@
+@model Project_management.Models.Ticket
+
+<h1>Ticket Details</h1>
+
+<div>
+    <p><strong>ID:</strong> @Model.Id</p>
+    <p><strong>Title:</strong> @Model.Title</p>
+    <p><strong>Status:</strong> @Model.Status</p>
+    <p><strong>Created At:</strong> @Model.CreatedAt</p>
+    
+    @if (Model.Status == Project_management.Models.Ticket.TaskStatus.CLOSED)
+    {
+        <p><strong>Closed At:</strong> @Model.ClosedAt</p>
+    }
+</div>
+
+<hr />
+
+<a href="@Url.Action("Edit", "Tickets", new { id = Model.Id })">Edit</a> |
+<a href="@Url.Action("Index", "Tickets")">Back to List</a>

@@ -1,0 +1,34 @@
+@model Project_management.Models.Ticket
+
+<h1>Create New Ticket</h1>
+
+<form asp-action="Add" method="post" class="form">
+    <div class="mb-3">
+        <label for="title" class="form-label">Title:</label>
+        <input asp-for="@Model.Title" id="title" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label for="projectId" class="form-label">Project:</label>
+        <select id="projectId" name="projectId" class="form-select" asp-for="@Model.ProjectId">
+            @foreach (var project in @ViewBag.Projects)
+            {
+                <option value="@project.Id">@project.Name</option>
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="status" class="form-label">Status:</label>
+        <select id="status" name="status" class="form-select" asp-for="@Model.Status">
+            <option value="CREATED">Created</option>
+            <option value="ON_GOING">On Going</option>
+            <option value="CLOSED">Closed</option>
+        </select>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary">Create</button>
+    </div>
+</form>
+
+<hr />
+
+<a href="@Url.Action("Index", "Tickets")" class="btn btn-secondary">Back to List</a>
